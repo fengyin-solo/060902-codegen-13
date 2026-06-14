@@ -159,9 +159,12 @@ const locationTypes = [
   { value: 'school', label: '学校', icon: '🏫' },
   { value: 'work', label: '公司', icon: '💼' },
   { value: 'transport', label: '交通', icon: '🚄' },
+  { value: 'medical', label: '医疗', icon: '🏥' },
+  { value: 'culture', label: '文化', icon: '🏛️' },
   { value: 'shopping', label: '购物', icon: '🛍️' },
   { value: 'hotel', label: '酒店', icon: '🏨' },
-  { value: 'phrase', label: '其他', icon: '📍' }
+  { value: 'sports', label: '运动', icon: '⚽' },
+  { value: 'place', label: '具体地点', icon: '📍' }
 ]
 
 const sortedMemories = computed(() => {
@@ -207,7 +210,7 @@ function getTypeIcon(type) {
     hotel: '🏨',
     culture: '🏛️',
     sports: '⚽',
-    phrase: '📍'
+    place: '📍'
   }
   return typeMap[type] || '📍'
 }
@@ -226,7 +229,7 @@ function getTypeLabel(type) {
     hotel: '酒店住宿',
     culture: '文化场馆',
     sports: '运动场所',
-    phrase: '地点线索'
+    place: '具体地点'
   }
   return typeMap[type] || '地点'
 }
@@ -718,7 +721,10 @@ onMounted(() => {
 .tag-school { background: #fffde7; color: #f57f17; }
 .tag-work { background: #eceff1; color: #37474f; }
 .tag-transport { background: #e0f7fa; color: #00838f; }
+.tag-medical { background: #ffebee; color: #c62828; }
+.tag-culture { background: #f3e5f5; color: #4a148c; }
 .tag-shopping { background: #fce4ec; color: #ad1457; }
 .tag-hotel { background: #fbe9e7; color: #bf360c; }
-.tag-phrase { background: #f5f5f5; color: #616161; }
+.tag-sports { background: #e8f5e9; color: #1b5e20; }
+.tag-place { background: #f5f5f5; color: #616161; }
 </style>
