@@ -70,6 +70,7 @@
         <h3>✨ 为您找到 {{ store.loveLetters.length }} 段情书级对话</h3>
         <div class="actions">
           <button class="btn btn-secondary" @click="clearAll">🔄 重新上传</button>
+          <router-link to="/map" class="btn btn-secondary">🗺️ 回忆地图</router-link>
           <router-link to="/wall" class="btn btn-primary">🎨 查看情书墙</router-link>
         </div>
       </div>
@@ -127,7 +128,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { store } from '@/store'
 import { parseSmsFile, generateDemoData } from '@/parsers'
-import { findLoveLetters } from '@/detectors'
+import { findLoveLetters, extractLocationMap } from '@/detectors'
 
 const router = useRouter()
 const fileInput = ref(null)
@@ -163,7 +164,10 @@ async function processFile(file) {
     const loveLetters = findLoveLetters(conversations)
     store.setLoveLetters(loveLetters)
     
-    if (loveLetters.length === 0) {
+    const locationMemories = extractLocationMap(conversations)
+    store.setLocationMemories(locationMemories)
+    
+    if (loveLetters.length === 0 && locationMemories.length === 0) {
       store.error = '没有找到符合条件的对话，试试上传更多短信吧！'
     }
   } catch (e) {
@@ -185,6 +189,9 @@ async function loadDemo() {
     
     const loveLetters = findLoveLetters(conversations)
     store.setLoveLetters(loveLetters)
+    
+    const locationMemories = extractLocationMap(conversations)
+    store.setLocationMemories(locationMemories)
   } catch (e) {
     store.error = e.message
   } finally {

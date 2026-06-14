@@ -3,13 +3,15 @@ import frequencyDetector from './frequencyDetector.js'
 import loveLetterDetector from './loveLetterDetector.js'
 import quarrelDetector from './quarrelDetector.js'
 import cuteDetector from './cuteDetector.js'
+import locationDetector, { extractLocationMap } from './locationDetector.js'
 
 const detectors = [
   keywordDetector,
   frequencyDetector,
   loveLetterDetector,
   quarrelDetector,
-  cuteDetector
+  cuteDetector,
+  locationDetector
 ]
 
 export function registerDetector(detector) {
@@ -144,5 +146,7 @@ export {
   frequencyDetector,
   loveLetterDetector,
   quarrelDetector,
-  cuteDetector
+  cuteDetector,
+  locationDetector,
+  extractLocationMap
 }

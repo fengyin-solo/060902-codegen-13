@@ -5,6 +5,8 @@ export const store = reactive({
   selectedConversation: null,
   loveLetters: [],
   anonymousPosts: [],
+  locationMemories: [],
+  selectedLocation: null,
   processing: false,
   error: null,
 
@@ -18,6 +20,14 @@ export const store = reactive({
 
   setSelectedConversation(conv) {
     this.selectedConversation = conv
+  },
+
+  setLocationMemories(memories) {
+    this.locationMemories = memories
+  },
+
+  setSelectedLocation(location) {
+    this.selectedLocation = location
   },
 
   addAnonymousPost(post) {
@@ -36,6 +46,8 @@ export const store = reactive({
     this.conversations = []
     this.selectedConversation = null
     this.loveLetters = []
+    this.locationMemories = []
+    this.selectedLocation = null
     this.error = null
   }
 })
